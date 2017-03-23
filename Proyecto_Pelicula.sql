@@ -96,7 +96,7 @@ create table comentario(
 	foreign key (idusuario) references usuario (idusuario) on delete cascade on update cascade,
 	foreign key (idpelicula) references pelicula (idpelicula) on delete cascade on update cascade
 );
-
+  
 create table actor_pelicula(
 	idactormovie int unsigned not null,
 	idpelicula int unsigned not null,
@@ -114,3 +114,16 @@ create table sala_cine(
 	foreign key (idcine) references cine (idcine) on delete cascade on update cascade,
 	foreign key (idsala) references sala (idsala) on delete cascade on update cascade
 );
+
+create table cartelera(
+	idpelicula int unsigned not null,
+	idcine int unsigned not null,
+	idsala int unsigned not null,
+	idhorario int unsigned not null,
+	primary key (idpelicula,idcine,idsala,idhorario),
+	foreign key (idpelicula) references pelicula (idpelicula) on delete cascade on update cascade,
+	foreign key (idhorario) references horario (idhorario) on delete cascade on update cascade,
+	foreign key (idcine) references cine (idcine) on delete cascade on update cascade,
+	foreign key (idsala) references sala (idsala) on delete cascade on update cascade
+);
+
