@@ -9,7 +9,9 @@ class horario_sala
     }
     public static function getAll()
     {
-        $consulta = "SELECT * FROM horario_sala";
+        $consulta = "SELECT hora,fecha,sala FROM horario_sala a
+		inner join horario h on h.idhorario=a.idhorario
+		inner join sala s on s.idsala=a.idsala";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);

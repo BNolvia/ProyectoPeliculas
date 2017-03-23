@@ -9,7 +9,7 @@ class pelicula_director
     }
     public static function getAll()
     {
-        $consulta =  "select nombrepelicula, nombre from pelicula_director ap
+        $consulta =  "select imagen,nombrepelicula,nombre,foto from pelicula_director ap
 	inner join pelicula p on p.idpelicula=ap.idpelicula
 		inner join director e on e.iddirector=ap.iddirector
 		";

@@ -9,9 +9,10 @@ class cartelera
     }
     public static function getAll()
     {
-        $consulta = "select imagen,nombrepelicula,nombrecine,sala from cartelera a
+        $consulta = "select imagen,nombrepelicula,nombrecine,sala,hora from cartelera a
 		inner join cine c on c.idcine=a.idcine
 		inner join sala s on s.idsala=a.idsala
+		inner join horario h on h.idhorario=a.idhorario
      inner join pelicula p on p.idpelicula=a.idpelicula";
         try {
             // Preparar sentencia
