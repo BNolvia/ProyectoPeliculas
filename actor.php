@@ -2,15 +2,14 @@
 
 require 'Database.php';
 
-class horario
+class actor
 {
     function __construct()
     {
     }
     public static function getAll()
     {
-        $consulta = "SELECT * FROM horario";
-
+        $consulta = "SELECT * FROM actor";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -25,17 +24,18 @@ class horario
     }
 
 }
-
+    
 ?>
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     // Manejar petición GET
-    $horario= horario::getAll();
+    $actor= actor::getAll();
 
-    if ($horario) {
+    if ($actor) {
 
-        $datos["horario"] = $horario;
+        $datos["actor"] = $actor;
 
         print json_encode($datos);
     } else {

@@ -2,15 +2,16 @@
 
 require 'Database.php';
 
-class horario
+class comentario
 {
     function __construct()
     {
     }
     public static function getAll()
     {
-        $consulta = "SELECT * FROM horario";
-
+        $consulta =  "select imagen,nombrepelicula,calificacion,nombreusuario,comentario,fecha from comentario ap
+						inner join pelicula p on p.idpelicula=ap.idpelicula
+						inner join usuario u on u.idusuario=ap.idusuario";
         try {
             // Preparar sentencia
             $comando = Database::getInstance()->getDb()->prepare($consulta);
@@ -31,11 +32,11 @@ class horario
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     // Manejar petición GET
-    $horario= horario::getAll();
+    $comentario= comentario::getAll();
 
-    if ($horario) {
+    if ($comentario) {
 
-        $datos["horario"] = $horario;
+        $datos["comentario"] = $comentario;
 
         print json_encode($datos);
     } else {
